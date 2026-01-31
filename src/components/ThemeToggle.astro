@@ -29,36 +29,47 @@
 </label>
 
 <script is:inline>
-  const lightThemeName = "light";
-  const darkThemeName = "dark";
+  // const lightThemeName = "light";
+  // const darkThemeName = "dark";
 
-  // Set theme on page load based on localStorage or system preference
-  function setTheme() {
-    const theme =
-      localStorage.getItem("theme") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? darkThemeName
-        : lightThemeName);
-    document.documentElement.setAttribute("data-theme", theme);
-    const toggle = document.querySelector(".theme-controller");
-    if (toggle) {
-      toggle.checked = theme === darkThemeName;
-    }
+  // // Set theme on page load based on localStorage or system preference
+  // function setTheme() {
+  //   const theme =
+  //     localStorage.getItem("theme") ||
+  //     (window.matchMedia("(prefers-color-scheme: dark)").matches
+  //       ? darkThemeName
+  //       : lightThemeName);
+  //   document.documentElement.setAttribute("data-theme", theme);
+  //   const toggle = document.querySelector(".theme-controller");
+  //   if (toggle) {
+  //     toggle.checked = theme === darkThemeName;
+  //   }
+  // }
+
+  // // Update theme when toggle is clicked
+  // document.addEventListener("change", (e) => {
+  //   const target = e.target;
+  //   if (target.classList.contains("theme-controller")) {
+  //     const theme = target.checked ? darkThemeName : lightThemeName;
+  //     document.documentElement.setAttribute("data-theme", theme);
+  //     localStorage.setItem("theme", theme);
+  //   }
+  // });
+
+  // // Run on page load
+  // setTheme();
+
+  // // Run after view transitions
+  // document.addEventListener("astro:after-swap", setTheme);
+
+  // Force dark theme immediately
+  function lockDarkTheme() {
+    document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark");
   }
 
-  // Update theme when toggle is clicked
-  document.addEventListener("change", (e) => {
-    const target = e.target;
-    if (target.classList.contains("theme-controller")) {
-      const theme = target.checked ? darkThemeName : lightThemeName;
-      document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("theme", theme);
-    }
-  });
-
-  // Run on page load
-  setTheme();
-
-  // Run after view transitions
-  document.addEventListener("astro:after-swap", setTheme);
+  lockDarkTheme();
+  
+  // Ensure it stays dark even after page navigation (View Transitions)
+  document.addEventListener("astro:after-swap", lockDarkTheme);
 </script>

@@ -7,19 +7,39 @@ import Projects from "../components/Projects.astro";
 import Blog from "../components/Blog.astro";
 import Hackathons from "../components/Hackathons.astro";
 import Contact from "../components/Contact.astro";
-import { Briefcase, GraduationCap } from "@lucide/astro";
+
+// 1. Import the icons you want to use
+import { 
+  Briefcase, 
+  GraduationCap, 
+  Code2, 
+  Terminal, 
+  Cpu, 
+  Globe 
+} from "@lucide/astro";
+
 import { getEntry, render } from "astro:content";
 
-// Load Hero singleton
 const heroEntry = await getEntry("hero", "index");
-
-// Load About singleton
 const aboutEntry = await getEntry("about", "index");
 const { Content: AboutContent } = await render(aboutEntry);
-
-// Load General singleton
 const generalEntry = await getEntry("general", "index");
 const general = generalEntry.data;
+
+// 2. Define your tech stack array
+const myTechStack = [
+  // { iconName: "simple-icons:react" },
+  // { name: "Tailwind", iconName: "simple-icons:tailwindcss" },
+  // { name: "Astro", iconName: "simple-icons:astro" },
+  // { name: "TypeScript", iconName: "simple-icons:typescript" },
+  // { name: "Node.js", iconName: "simple-icons:nodedotjs" },
+  // { name: "MongoDB", iconName: "simple-icons:mongodb" },
+  { iconName: "simple-icons:nodedotjs" },
+  { iconName: "simple-icons:nestjs" },
+  { iconName: "simple-icons:express" },
+  { iconName: "simple-icons:postgresql" },
+  { iconName: "simple-icons:mongodb" },
+];
 ---
 
 <Layout
@@ -27,12 +47,10 @@ const general = generalEntry.data;
   description={heroEntry.data.description}
 >
   <main>
-    <!-- Hero Section (Always visible) -->
     <Hero hero={heroEntry.data} />
 
-    <!-- All other sections hidden on mobile -->
-    <div class="hidden lg:block">
-      <!-- About Section -->
+    <!-- <div class="hidden lg:block"> --></div>
+     <div class="space-y-10">
       {
         general.showAboutSection && (
           <About
@@ -40,15 +58,10 @@ const general = generalEntry.data;
             photo={aboutEntry.data.photo}
             Content={AboutContent}
             link={aboutEntry.data.link}
+            techStack={myTechStack}  /* 3. Pass the array here */
           />
         )
       }
-
-      <!-- Projects Section -->
-      {general.showProjectsSection && <Projects />}
-
-      <!-- Blog Section -->
-      {general.showBlogSection && <Blog />}
 
       <!-- Work Experience Section -->
       {
@@ -62,6 +75,13 @@ const general = generalEntry.data;
           />
         )
       }
+
+      <!-- Projects Section -->
+      {general.showProjectsSection && <Projects />}
+
+      <!-- Blog Section -->
+      {general.showBlogSection && <Blog />}
+
 
       <!-- Education Section -->
       {
