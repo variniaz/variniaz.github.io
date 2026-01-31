@@ -26,19 +26,15 @@ const { Content: AboutContent } = await render(aboutEntry);
 const generalEntry = await getEntry("general", "index");
 const general = generalEntry.data;
 
-// 2. Define your tech stack array
 const myTechStack = [
-  // { iconName: "simple-icons:react" },
-  // { name: "Tailwind", iconName: "simple-icons:tailwindcss" },
-  // { name: "Astro", iconName: "simple-icons:astro" },
-  // { name: "TypeScript", iconName: "simple-icons:typescript" },
-  // { name: "Node.js", iconName: "simple-icons:nodedotjs" },
-  // { name: "MongoDB", iconName: "simple-icons:mongodb" },
-  { iconName: "simple-icons:nodedotjs" },
-  { iconName: "simple-icons:nestjs" },
-  { iconName: "simple-icons:express" },
-  { iconName: "simple-icons:postgresql" },
-  { iconName: "simple-icons:mongodb" },
+  { name: "Node.js", iconName: "simple-icons:nodedotjs" },
+  { name: "Nest JS", iconName: "simple-icons:nestjs" },
+  { name: "Express JS", iconName: "simple-icons:express" },
+  { name: "PostgreSQL", iconName: "simple-icons:postgresql" },
+  { name: "MongoDB", iconName: "simple-icons:mongodb" },
+  { name: "RabbitMQ", iconName: "simple-icons:rabbitmq" },
+  { name: "Redis", iconName: "simple-icons:redis" },
+  { name: "Git", iconName: "simple-icons:git" },
 ];
 ---
 
@@ -58,7 +54,7 @@ const myTechStack = [
             photo={aboutEntry.data.photo}
             Content={AboutContent}
             link={aboutEntry.data.link}
-            techStack={myTechStack}  /* 3. Pass the array here */
+            techStack={myTechStack} 
           />
         )
       }

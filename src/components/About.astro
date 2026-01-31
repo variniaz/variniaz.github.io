@@ -7,42 +7,12 @@ import { Icon } from 'astro-icon/components';
 interface Props {
   title: string;
   photo?: ImageMetadata | string;
-  // We'll change 'Content' to 'techStack' which is an array of objects
   techStack?: { name: string; iconName?: string }[];
   link?: string;
 }
 
 const { title, photo, techStack = [], link } = Astro.props;
----
-
-<!-- <section id="about" class="py-20 px-4">
-  <div class="max-w-4xl mx-auto">
-    <div class="card card-side bg-base-200 shadow-sm">
-      <div class="card-body items-center text-center">
-        <h2 class="card-title text-2xl justify-center mb-6">{title}</h2>
-
-        <div class="flex flex-wrap justify-center gap-6">
-          {techStack.map((tech) => (
-            <div class="flex flex-col items-center gap-2 group">
-              <div class="p-4 bg-base-100 rounded-xl shadow-sm transition-transform group-hover:-translate-y-1">
-                {tech.icon ? (
-                  /* If using Lucide Icons */
-                  <tech.icon class="size-8 text-primary" />
-                ) : (
-                  /* If using Image URLs (SVG/PNG) */
-                  <img src={tech.logoUrl} alt={tech.name} class="size-8 object-contain" />
-                )}
-              </div>
-              <span class="text-xs font-medium opacity-70">{tech.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<section id="about" class="py-20 px-4">
+--- <section id="about" class="py-20 px-4">
   <div class="max-w-4xl mx-auto">
     <div class="card bg-base-200 shadow-sm">
       <div class="card-body items-center text-center">
@@ -50,16 +20,26 @@ const { title, photo, techStack = [], link } = Astro.props;
 
         <div class="flex flex-wrap justify-center gap-8">
           {techStack.map((tech) => (
-            <div class="flex flex-col items-center gap-2 group">
-              <div class="p-3 bg-base-100 rounded-2xl shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
-                <Icon name={tech.iconName} class="size-10" />
+            <div class="flex flex-col items-center group relative">
+              
+              <div class="p-4 bg-base-100 rounded-2xl shadow-sm ring-1 ring-base-300 transition-all duration-300 group-hover:scale-110 group-hover:ring-primary/50 group-hover:shadow-xl cursor-default">
+                {tech.iconName && <Icon name={tech.iconName} class="size-10" />}
               </div>
-              <span class="text-xs font-semibold opacity-60 group-hover:opacity-100">{tech.name}</span>
+
+              <span class="absolute -top-10 scale-0 group-hover:scale-100 
+             opacity-0 group-hover:opacity-100 
+             transition-all duration-200 origin-bottom 
+             bg-neutral text-neutral-content px-2 py-1 rounded 
+             text-[11px] font-medium tracking-wide 
+             whitespace-nowrap pointer-events-none z-10 shadow-md">
+              {tech.name}
+              <span class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-neutral"></span>
+            </span>
+              
             </div>
           ))}
         </div>
 
-        {/* ... Plus button code ... */}
       </div>
     </div>
   </div>
