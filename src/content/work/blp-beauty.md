@@ -1,7 +1,7 @@
 ---
 title: BLP Beauty
 subtitle: Backend Developer (Internship)
-location: South Jakarta
+location: Jakarta, Indonesia
 startDate: 2022-10-19
 endDate: 2023-08-05
 skills:

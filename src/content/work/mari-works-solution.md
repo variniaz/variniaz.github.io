@@ -1,7 +1,7 @@
 ---
 title: Mari Works Solution (Tixfly)
 subtitle: Backend Engineer
-location: South Jakarta
+location: Jakarta, Indonesia
 startDate: 2023-10-23
 skills:
   - Node.js
