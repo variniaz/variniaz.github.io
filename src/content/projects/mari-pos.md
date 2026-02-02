@@ -2,8 +2,8 @@
 featured: true
 title: Mari POS
 description: >-
-  Mari POS is a Point-of-Sales System, and being a part of 360-environment of
-  Tixfly.
+  Mari POS is a Point-of-Sales System, and being a part of 360-degree ecosystem
+  of Tixfly.
 image: '@assets/projects/mari-pos/image.png'
 startDate: 2024-06-01
 endDate: 2026-02-27
@@ -15,32 +15,47 @@ skills:
   - Redis
   - Nest JS
 ---
-## Overview
+## Core Features
 
-Tixfly is an Indonesian-based event management and ticketing platform designed to be a "360-degree ecosystem" for event organizers.
+### Dashboard Management
 
-Unlike traditional ticket aggregators that simply list events, Tixfly focuses on providing a comprehensive suite of tools for the behind-the-scenes management of concerts, sports, and festivals.
+- Built backend support for product and stock management
+- Handled transaction configuration such as fees and taxes
+- Managed outlet-level configuration and reporting access
+- Supported flexible dashboard features for different business needs
 
-Tixfly is often used for high-profile events in Indonesia that require complex logistics, such as the Jakarta Running Festival, Jakarta Fashion Week, RunWMe 2024, and various music concerts. It is operated under PT Multi Way Solution (sister brand of PT Mari Works Solution
+### Flexible Backend Use Cases
 
-[More info about Tixfly](https://www.tixfly.id)
+- Designed backend use cases adaptable for retail and F&B businesses
+- Supported table-based layouts for dine-in operations
+- Ensured configurations could be adjusted without changing core logic
 
-## Core Features I've Contributed On
+### Transactional Flow
 
-### Ticketing Queue
+- Implemented end-to-end transactional flow on the backend
+- Handled transaction states from creation to completion
+- Ensured reliability and data consistency across the flow
 
-- This feature may not be very visible to users, but on the backend it acts as a complex traffic controller, managing data flow to ensure nothing is lost and that the most urgent issues are handled first.
-- I contributed on developing the queue system, especially on ticketing transaction with big traffics.
-- The queue system handled more than 270,000 transactions.
+### Service Integration
 
-### Dynamic Seating Plan
+- Integrated backend services with external systems such as ticketing
+- Managed data exchange between internal and external services
+- Ensured stable communication between services
 
-- One of the core features allows clients to create a seating plan for each event, with their own custom seating layout.
-- I contributed to the backend system, including dashboard requirements and handling customer transactions related to seat selection.
-- This seating-plan system has been used in several large-scale events, with up to ___ participants per event.
+### Offline Transaction Synchronization
 
-### Ticket Handover & Delegation
+- Built transaction synchronization from offline clients to the server
+- Ensured transaction data was safely pushed without data corruption
+- Handled high traffic scenarios during data synchronization
 
-- **Ticket Handover**: a feature that allows formal process of transferring responsibility for an active ticket from one ticket owner to another.
-- **Ticket Delegation:** a feature that allows customers to delegate a ticket to another person, enabling the delegated user to use the ticket within a specified time period. This feature is commonly used for race pack collection.
-- I contributed to this core feature, focusing on ensuring that the data used throughout the process remains reliable and valid.
+### Settlement Report
+
+- Developed settlement reports based on configurable business rules
+- Generated reports aligned with finance team requirements
+- Ensured report outputs matched configured transaction use cases
+
+---
+
+## Project Impact
+
+This project has handled more than 30,000 transaction on several large-scale events across 130+ tenants on exhibition. It also handled large traffic and the data synchronization, so the data was safely stored in the server.

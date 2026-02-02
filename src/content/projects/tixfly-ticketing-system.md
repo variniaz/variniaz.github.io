@@ -25,7 +25,7 @@ Tixfly is often used for high-profile events in Indonesia that require complex l
 
 [More info about Tixfly](https://www.tixfly.id)
 
-## Core Features I've Contributed On
+## Core Features I Contributed To
 
 ### Ticketing Queue
 
