@@ -28,4 +28,6 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  site: 'https://variniaz.github.io',
+  base: '/'
 });
